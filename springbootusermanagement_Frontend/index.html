@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Toasts Container -->
+  <div class="notification-container" id="notif-container"></div>
+
+  <header>
+    <h1>User Management</h1>
+    <p>Manage your users with a sleek modern interface</p>
+  </header>
+
+  <main class="container">
+    
+    <div class="grid-layout">
+      <!-- Create User Card -->
+      <section class="card">
+        <h2>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v-2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Create New User
+        </h2>
+        <form id="create-user-form">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required placeholder="John">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+          </div>
+          <button type="submit" class="btn btn-primary">Create User</button>
+        </form>
+      </section>
+
+      <!-- Search User Card -->
+      <section class="card">
+        <h2>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          Search User by ID
+        </h2>
+        <form id="search-user-form">
+          <div class="form-group">
+            <label for="searchId">User ID</label>
+            <input type="number" id="searchId" required placeholder="Enter User ID" min="1">
+          </div>
+          <button type="submit" class="btn btn-secondary">Fetch User</button>
+        </form>
+        
+        <div id="search-result" class="search-result hidden">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- All Users Section -->
+    <section class="card mt-2">
+      <div class="card-header">
+        <h2>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          All Users
+        </h2>
+        <button id="load-users-btn" class="btn btn-outline">Load / Refresh Users</button>
+      </div>
+      
+      <div class="table-container">
+        <table id="users-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated via JS -->
+            <tr>
+              <td colspan="5" class="text-center text-muted">No users loaded. Click "Load / Refresh Users".</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Update User Modal -->
+  <div id="update-modal" class="modal hidden">
+    <div class="modal-content card">
+      <div class="modal-header">
+        <h2>Edit User</h2>
+        <button id="close-modal" class="btn-close">&times;</button>
+      </div>
+      <form id="update-user-form">
+        <input type="hidden" id="updateId">
+        <div class="form-group">
+          <label for="updateFirstName">First Name</label>
+          <input type="text" id="updateFirstName" required>
+        </div>
+        <div class="form-group">
+          <label for="updateLastName">Last Name</label>
+          <input type="text" id="updateLastName" required>
+        </div>
+        <div class="form-group">
+          <label for="updateEmail">Email</label>
+          <input type="email" id="updateEmail" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-update" class="btn btn-outline">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
