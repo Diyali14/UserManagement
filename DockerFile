@@ -15,7 +15,7 @@ COPY springbootusermanagement_Frontend /frontend
 # Optional: if you want Spring Boot to serve frontend
 # Move frontend files into /app/resources/static if needed
 
-COPY springbootusermanagement_Frontend /app/springboot-usermanagement/src/main/resources/static
+
 
 # Expose port
 EXPOSE 8080
