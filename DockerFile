@@ -10,15 +10,8 @@ FROM eclipse-temurin:20-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Copy frontend into resources so Spring Boot can serve it
-COPY springbootusermanagement_Frontend /frontend
-# Optional: if you want Spring Boot to serve frontend
-# Move frontend files into /app/resources/static if needed
-
-
-
-# Expose port
 EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
 
 # Run the Spring Boot app
 ENTRYPOINT ["java","-jar","app.jar"]
